@@ -52,14 +52,18 @@ namespace DirectoryPrinterAdvanced
                 {
                     try
                     {
-                        lookUpDirectories(path);
                         if (filesIncluded)
                         {
+                            lookUpDirectories(path);
                             lookUpFiles(path);
                         }
                         else
                         {
-                            streamWriter.WriteLine(path);
+                            if (directoryInfo.GetDirectories().Length == 0)
+                            {
+                                streamWriter.WriteLine(path);
+                            }
+                            lookUpDirectories(path);
                         }
                     }
                     catch (UnauthorizedAccessException)
