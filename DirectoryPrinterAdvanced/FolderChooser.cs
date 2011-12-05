@@ -50,10 +50,10 @@ namespace DirectoryPrinterAdvanced
             if (selectedDirectoryPath != null)
             {
                 getDestinationFolder();
-            }
-            if (destinationFolderPath != null)
-            {
-                printFolder();
+                if (destinationFolderPath != null)
+                {
+                    printFolder();
+                }
             }
         }
     }
