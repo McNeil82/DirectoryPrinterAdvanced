@@ -12,7 +12,7 @@ namespace DirectoryPrinterAdvanced
         {
             InitializeComponent();
         }
-        
+
         private void getDestinationFolder()
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -21,13 +21,8 @@ namespace DirectoryPrinterAdvanced
             }
             else
             {
-                exit();
+                destinationFolderPath = null;
             }
-        }
-
-        private void exit()
-        {
-            Environment.Exit(-1);
         }
 
         private void printFolder()
@@ -45,15 +40,21 @@ namespace DirectoryPrinterAdvanced
             }
             else
             {
-                exit();
+                selectedDirectoryPath = null;
             }
         }
 
         private void chooseDirectoryButton_Click(object sender, EventArgs e)
         {
             getFolderToPrint();
-            getDestinationFolder();
-            printFolder();
+            if (selectedDirectoryPath != null)
+            {
+                getDestinationFolder();
+            }
+            if (destinationFolderPath != null)
+            {
+                printFolder();
+            }
         }
     }
 }
