@@ -11,18 +11,8 @@ namespace DirectoryPrinterAdvanced
         public FolderChooser()
         {
             InitializeComponent();
-            getFolderToPrint();
-            getDestinationFolder();
-            printFolder();
-            exitProgramSucessfully();
         }
-
-        private void exitProgramSucessfully()
-        {
-            MessageBox.Show("Files printed.", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            exit();
-        }
-
+        
         private void getDestinationFolder()
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -42,8 +32,9 @@ namespace DirectoryPrinterAdvanced
 
         private void printFolder()
         {
-            Printer printer = new Printer(selectedDirectoryPath, destinationFolderPath);
+            Printer printer = new Printer(selectedDirectoryPath, destinationFolderPath, filesCheckbox.Checked);
             printer.print();
+            MessageBox.Show("Files printed.", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void getFolderToPrint()
@@ -56,6 +47,13 @@ namespace DirectoryPrinterAdvanced
             {
                 exit();
             }
+        }
+
+        private void chooseDirectoryButton_Click(object sender, EventArgs e)
+        {
+            getFolderToPrint();
+            getDestinationFolder();
+            printFolder();
         }
     }
 }
