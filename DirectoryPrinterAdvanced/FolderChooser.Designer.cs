@@ -46,6 +46,7 @@
             // 
             // chooseDirectoryButton
             // 
+            this.chooseDirectoryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.chooseDirectoryButton.AutoSize = true;
             this.chooseDirectoryButton.Location = new System.Drawing.Point(174, 227);
             this.chooseDirectoryButton.Name = "chooseDirectoryButton";
