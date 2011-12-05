@@ -58,11 +58,13 @@
             // filesCheckbox
             // 
             this.filesCheckbox.AutoSize = true;
+            this.filesCheckbox.Checked = true;
+            this.filesCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.filesCheckbox.Location = new System.Drawing.Point(13, 13);
             this.filesCheckbox.Name = "filesCheckbox";
-            this.filesCheckbox.Size = new System.Drawing.Size(247, 17);
+            this.filesCheckbox.Size = new System.Drawing.Size(67, 17);
             this.filesCheckbox.TabIndex = 1;
-            this.filesCheckbox.Text = "directories only (if not checked files are printed)";
+            this.filesCheckbox.Text = "print files";
             this.filesCheckbox.UseVisualStyleBackColor = true;
             // 
             // FolderChooser

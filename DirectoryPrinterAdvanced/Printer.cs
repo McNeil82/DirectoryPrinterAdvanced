@@ -7,22 +7,25 @@ namespace DirectoryPrinterAdvanced
     {
         private string basicFolder;
         private string destinationPath;
-        private bool directoriesOnly;
+        private bool filesIncluded;
         private FileStream outPutFile;
         private StreamWriter streamWriter;
 
-        public Printer(string basicFolder, string destinationPath, bool directoriesOnly)
+        public Printer(string basicFolder, string destinationPath, bool filesIncluded)
         {
             this.basicFolder = basicFolder;
             this.destinationPath = destinationPath;
-            this.directoriesOnly = directoriesOnly;
+            this.filesIncluded = filesIncluded;
         }
 
         public void print()
         {
             createFile();
             lookUpDirectories(basicFolder);
-            lookUpFiles(basicFolder);
+            if (filesIncluded)
+            {
+                lookUpFiles(basicFolder);
+            }
             closeFile();
         }
 
@@ -50,13 +53,13 @@ namespace DirectoryPrinterAdvanced
                     try
                     {
                         lookUpDirectories(path);
-                        if (directoriesOnly)
+                        if (filesIncluded)
                         {
-                            streamWriter.WriteLine(path);
+                            lookUpFiles(path);
                         }
                         else
                         {
-                            lookUpFiles(path);
+                            streamWriter.WriteLine(path);
                         }
                     }
                     catch (UnauthorizedAccessException)
